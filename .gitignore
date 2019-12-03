@@ -1,0 +1,67 @@
+installs
+*.log
+node_modules/
+.travis.bak
+
+# Added for pedestal framework test
+.lein-deps-sum
+
+# common junk
+*.log
+*.swp
+*.diff
+*.patch
+*/bin/
+
+# intellij
+*.iml
+*.ipr
+*.iws
+.idea/
+.hsenv/
+azure.err
+php-kohana/application/logs/
+php-fuel/fuel/app/logs/
+results/
+benchmark.cfg
+
+# Mac filesystem dust
+.DS_Store
+
+# pmd
+.pmdruleset
+.pmd
+
+# netbeans
+/nbproject
+
+# Visual Studio Code
+.vscode
+
+# vim
+.*.sw[a-p]
+
+# merge tooling
+*.orig
+
+# python-isms
+*.pyc
+
+# java / ruby stuff
+*.lock
+*.war
+
+# go
+go/pkg/*
+beego/pkg/*
+
+# nim
+nimcache
+
+# crystal
+.crystal
+*.out
+
+#don't ignore merge request templates
+!.github/
+dependency-reduced-pom.xml

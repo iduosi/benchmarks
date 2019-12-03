@@ -1,0 +1,37 @@
+#
+# Put this in /lib/systemd/system/frameworkbenchmark.service.
+#
+# Useful commands:
+#
+#   sudo service frameworkbenchmark start
+#   sudo service frameworkbenchmark stop
+#   sudo service frameworkbenchmark restart
+#   sudo journalctl -u frameworkbenchmark -f
+#
+
+[Service]
+Environment=TFB_SERVER_HOST=127.0.0.1
+Environment=TFB_CLIENT_HOST=127.0.0.1
+Environment=TFB_DATABASE_HOST=127.0.0.1
+Environment=TFB_REPOPARENT=/home/benchmark
+Environment=TFB_REPONAME=FrameworkBenchmarks
+Environment=TFB_REPOURI=https://github.com/TechEmpower/FrameworkBenchmarks.git
+Environment=TFB_REPOBRANCH=master
+Environment=TFB_UPLOAD_URI=http://localhost/changeme
+Environment=TFB_ENVIRONMENT=ChangeMe
+Environment="TFB_RUN_NAME=Continuous Benchmarking Run %%Y-%%m-%%d %%H:%%M:%%S"
+Environment=HOME=/home/benchmark
+Environment=LANG=en_US.UTF-8
+User=benchmark
+Group=benchmark
+WorkingDirectory=/home/benchmark
+LimitNOFILE=1048576
+LimitNPROC=1048576
+UMask=0002
+ExecStart=/home/benchmark/frameworkbenchmark-startup.sh
+ExecStopPost=/home/benchmark/frameworkbenchmark-shutdown.sh
+Restart=on-success
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
