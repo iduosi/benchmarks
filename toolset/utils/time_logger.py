@@ -5,10 +5,7 @@ from toolset.utils.output_helper import log
 
 
 class TimeLogger:
-    """
-    Class for keeping track of and logging execution times
-    for suite actions
-    """
+    """Class for keeping track of and logging execution times for suite actions"""
 
     def __init__(self):
         self.start = time.time()
@@ -47,11 +44,7 @@ class TimeLogger:
         self.database_started = int(time.time() - self.database_starting)
 
     def log_database_start_time(self, log_prefix, file):
-        log("Time starting database: %s" % TimeLogger.output(
-            self.database_started),
-            prefix=log_prefix,
-            file=file,
-            color=Fore.YELLOW)
+        log("Time starting database: %s" % TimeLogger.output(self.database_started), prefix=log_prefix, file=file, color=Fore.YELLOW)
 
     def mark_benchmarking_start(self):
         self.benchmarking_start = time.time()
@@ -59,10 +52,7 @@ class TimeLogger:
     def log_benchmarking_end(self, log_prefix, file):
         total = int(time.time() - self.benchmarking_start)
         self.benchmarking_total = self.benchmarking_total + total
-        log("Benchmarking time: %s" % TimeLogger.output(total),
-            prefix=log_prefix,
-            file=file,
-            color=Fore.YELLOW)
+        log("Benchmarking time: %s" % TimeLogger.output(total), prefix=log_prefix, file=file, color=Fore.YELLOW)
 
     def mark_build_start(self):
         self.build_start = time.time()
@@ -79,10 +69,7 @@ class TimeLogger:
 
     def log_build_flush(self, file):
         for b_log in self.build_logs:
-            log(b_log['str'],
-                prefix=b_log['log_prefix'],
-                file=file,
-                color=Fore.YELLOW)
+            log(b_log['str'], prefix=b_log['log_prefix'], file=file, color=Fore.YELLOW)
         self.build_logs = []
 
     def mark_test_starting(self):
@@ -92,43 +79,20 @@ class TimeLogger:
         self.accepting_requests = int(time.time() - self.test_started)
 
     def log_test_accepting_requests(self, log_prefix, file):
-        log("Time until accepting requests: %s" % TimeLogger.output(
-            self.accepting_requests),
-            prefix=log_prefix,
-            file=file,
-            color=Fore.YELLOW)
+        log("Time until accepting requests: %s" % TimeLogger.output(self.accepting_requests), prefix=log_prefix, file=file, color=Fore.YELLOW)
 
     def mark_test_start(self):
         self.test_start = time.time()
 
     def log_test_end(self, log_prefix, file):
         total = int(time.time() - self.test_start)
-        log("Total test time: %s" % TimeLogger.output(total),
-            prefix=log_prefix,
-            file=file,
-            color=Fore.YELLOW)
-        log("Total time building so far: %s" % TimeLogger.output(
-            self.build_total),
-            prefix="tfb: ",
-            file=file,
-            color=Fore.YELLOW)
-        log("Total time verifying so far: %s" % TimeLogger.output(
-            self.verify_total),
-            prefix="tfb: ",
-            file=file,
-            color=Fore.YELLOW)
+        log("Total test time: %s" % TimeLogger.output(total), prefix=log_prefix, file=file, color=Fore.YELLOW)
+        log("Total time building so far: %s" % TimeLogger.output( self.build_total), prefix="benchmark: ", file=file, color=Fore.YELLOW)
+        log("Total time verifying so far: %s" % TimeLogger.output(self.verify_total), prefix="benchmark: ", file=file, color=Fore.YELLOW)
         if self.benchmarking_total > 0:
-            log("Total time benchmarking so far: %s" % TimeLogger.output(
-                self.benchmarking_total),
-                prefix="tfb: ",
-                file=file,
-                color=Fore.YELLOW)
+            log("Total time benchmarking so far: %s" % TimeLogger.output(self.benchmarking_total), prefix="benchmark: ", file=file, color=Fore.YELLOW)
         running_time = int(time.time() - self.start)
-        log("Total execution time so far: %s" %
-            TimeLogger.output(running_time),
-            prefix="tfb: ",
-            file=file,
-            color=Fore.YELLOW)
+        log("Total execution time so far: %s" % TimeLogger.output(running_time), prefix="benchmark: ", file=file, color=Fore.YELLOW)
 
     def mark_verify_start(self):
         self.verify_start = time.time()
@@ -136,7 +100,4 @@ class TimeLogger:
     def log_verify_end(self, log_prefix, file):
         total = int(time.time() - self.verify_start)
         self.verify_total = self.verify_total + total
-        log("Verify time: %s" % TimeLogger.output(total),
-            prefix=log_prefix,
-            file=file,
-            color=Fore.YELLOW)
+        log("Verify time: %s" % TimeLogger.output(total), prefix=log_prefix, file=file, color=Fore.YELLOW)

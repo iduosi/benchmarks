@@ -3,17 +3,14 @@ from colorama import Fore
 
 
 class Audit:
-    '''
-    Audits frameworks for inconsistencies
-    '''
+    """Audits frameworks for inconsistencies"""
 
     def __init__(self, benchmarker):
         self.benchmarker = benchmarker
 
     def start_audit(self):
         for lang in self.benchmarker.metadata.gather_languages():
-            for test_dir in self.benchmarker.metadata.gather_language_tests(
-                    lang):
+            for test_dir in self.benchmarker.metadata.gather_language_tests(lang):
                 self.audit_test_dir(test_dir)
 
     def audit_test_dir(self, test_dir):

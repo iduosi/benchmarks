@@ -14,8 +14,8 @@ Environment=TFB_SERVER_HOST=127.0.0.1
 Environment=TFB_CLIENT_HOST=127.0.0.1
 Environment=TFB_DATABASE_HOST=127.0.0.1
 Environment=TFB_REPOPARENT=/home/benchmark
-Environment=TFB_REPONAME=FrameworkBenchmarks
-Environment=TFB_REPOURI=https://github.com/TechEmpower/FrameworkBenchmarks.git
+Environment=TFB_REPONAME=benchmarks
+Environment=TFB_REPOURI=https://github.com/iduosi/benchmarks.git
 Environment=TFB_REPOBRANCH=master
 Environment=TFB_UPLOAD_URI=http://localhost/changeme
 Environment=TFB_ENVIRONMENT=ChangeMe
